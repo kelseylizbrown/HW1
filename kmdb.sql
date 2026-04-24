@@ -183,6 +183,8 @@ INSERT INTO roles (movie_id, actor_id, character) VALUES (3, 9, "Bane");
 INSERT INTO roles (movie_id, actor_id, character) VALUES (3, 10, "John Blake");
 INSERT INTO roles (movie_id, actor_id, character) VALUES (3, 11, "Selina Kyle");
 
+UPDATE actors SET agent_id = 1 WHERE id = 1;
+
 -- Prints a header for the movies output
 .print "Movies"
 .print "======"
@@ -190,6 +192,7 @@ INSERT INTO roles (movie_id, actor_id, character) VALUES (3, 11, "Selina Kyle");
 
 -- ***TODO!***
 -- The SQL statement for the movies output goes here.
+SELECT movies.title, movies.year_released, movies.rating, studios.name FROM movies INNER JOIN studios ON studios.id = movies.studio_id;
 
 -- Example output:
 -- Movies
@@ -206,6 +209,7 @@ INSERT INTO roles (movie_id, actor_id, character) VALUES (3, 11, "Selina Kyle");
 
 -- ***TODO!***
 -- The SQL statement for the cast output goes here.
+SELECT movies.title, actors.name, roles.character FROM roles INNER JOIN movies ON movies.id = roles.movie_id INNER JOIN actors ON actors.id = roles.actor_id;
 
 -- Example output:
 -- Top Cast
@@ -234,6 +238,7 @@ INSERT INTO roles (movie_id, actor_id, character) VALUES (3, 11, "Selina Kyle");
 
 -- ***TODO!***
 -- The SQL statement for the represented actor(s) output goes here.
+SELECT actors.name FROM actors INNER JOIN agents ON agents.id = actors.agent_id WHERE agents.id = 1;
 
 -- Example output:
 -- Represented by agent
